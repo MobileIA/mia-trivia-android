@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'mobileia-trivia'
+
+    publishedGroupId = 'com.mobileia'
+    libraryName = 'MIA Trivia'
+    artifact = 'trivia'
+
+    libraryDescription = 'Library for Android.'
+
+    siteUrl = 'https://github.com/MobileIA/mia-trivia-android'
+    gitUrl = 'https://github.com/MobileIA/mia-trivia-android.git'
+
+    libraryVersion = '0.0.1'
+
+    developerId = 'mobileia'
+    developerName = 'MobileIA'
+    developerEmail = 'matiascamiletti@mobileia.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 26
 
@@ -9,7 +33,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
-        versionName "1.0"
+        versionName "0.0.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -32,3 +56,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
+
+apply from: '../installv1.gradle'
+apply from: '../bintrayv1.gradle'
