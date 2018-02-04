@@ -1,5 +1,6 @@
 package com.mobileia.trivia.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -19,4 +20,6 @@ public class Trivia {
     public Date start_date;
 
     public Date end_date;
+
+    public ArrayList<Option> options;
 }
