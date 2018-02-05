@@ -24,7 +24,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/placeholder"/>
+                    android:src="@drawable/placeholder"
+                    android:contentDescription="Image principal de la trivia"/>
 
                 <TextView
                     android:id="@+id/text_date"
@@ -47,6 +48,15 @@
                 android:textSize="24sp"
                 android:gravity="center_horizontal"
                 android:textColor="@android:color/black"/>
+
+            <LinearLayout
+                android:id="@+id/container_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+            </LinearLayout>
 
         </LinearLayout>
 

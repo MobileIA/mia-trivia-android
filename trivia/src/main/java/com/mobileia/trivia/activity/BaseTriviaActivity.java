@@ -44,7 +44,7 @@ abstract public class BaseTriviaActivity extends AppCompatActivity {
             @Override
             public void onSuccess(ArrayList<Trivia> trivias) {
                 // Asignamos las trivias al adapter
-                mAdapter.add(trivias);
+                mAdapter.addAll(trivias);
                 // Paramos el loading
                 mRecyclerView.stopLoading();
             }

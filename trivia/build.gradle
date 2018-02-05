@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/MobileIA/mia-trivia-android'
     gitUrl = 'https://github.com/MobileIA/mia-trivia-android.git'
 
-    libraryVersion = '0.0.3'
+    libraryVersion = '0.0.5'
 
     developerId = 'mobileia'
     developerName = 'MobileIA'
@@ -32,8 +32,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 3
-        versionName "0.0.3"
+        versionCode 5
+        versionName "0.0.5"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -57,7 +57,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     implementation 'com.mobileia:authentication:0.0.43'
-    implementation 'com.mobileia:recyclerview:0.0.13'
+    implementation 'com.mobileia:recyclerview:0.0.15'
 }
 
 apply from: '../installv1.gradle'
