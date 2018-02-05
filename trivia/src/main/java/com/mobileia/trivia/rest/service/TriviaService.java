@@ -21,4 +21,13 @@ public interface TriviaService {
             @Field("app_id") int app_id,
             @Field("access_token") String access_token
     );
+
+    @FormUrlEncoded
+    @POST("api/trivia/vote")
+    RestBodyCall<Boolean> vote(
+            @Field("app_id") int app_id,
+            @Field("access_token") String access_token,
+            @Field("trivia_id") int trivia_id,
+            @Field("option_id") int option_id
+    );
 }

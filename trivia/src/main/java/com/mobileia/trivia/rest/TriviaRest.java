@@ -37,6 +37,37 @@ public class TriviaRest extends RestBuilder {
     }
 
     /**
+     * Servicio para realizar una votacion
+     * @param triviaId
+     * @param optionId
+     * @param callback
+     */
+    public void vote(int triviaId, int optionId, final OnVoteComplete callback){
+        // Creamos el servicio
+        TriviaService service = createService(TriviaService.class);
+        // Generamos la call
+        RestBodyCall<Boolean> call = service.vote(Mobileia.getInstance().getAppId(), getAccessToken(), triviaId, optionId);
+        // Ejecutamos la call
+        call.enqueue(new Callback<RestBody<Boolean>>() {
+            @Override
+            public void onResponse(Call<RestBody<Boolean>> call, Response<RestBody<Boolean>> response) {
+                // Verificar si la respuesta fue incorrecta
+                if (!response.isSuccessful() || !response.body().success) {
+                    callback.onSuccess(false);
+                    return;
+                }
+                // Enviamos la respuesta
+                callback.onSuccess(response.body().response);
+            }
+
+            @Override
+            public void onFailure(Call<RestBody<Boolean>> call, Throwable t) {
+                callback.onSuccess(false);
+            }
+        });
+    }
+
+    /**
      * Servicio para obtener las trivias disponibles
      * @param callback
      */
@@ -88,5 +119,12 @@ public class TriviaRest extends RestBuilder {
      */
     public interface OnFetchAllComplete{
         void onSuccess(ArrayList<Trivia> trivias);
+    }
+
+    /**
+     * Interface para verificar si se realizo la votacion
+     */
+    public interface OnVoteComplete{
+        void onSuccess(Boolean response);
     }
 }

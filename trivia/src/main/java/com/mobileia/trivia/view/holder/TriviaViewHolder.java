@@ -10,12 +10,13 @@ import com.mobileia.recyclerview.holder.BaseViewHolder;
 import com.mobileia.trivia.R;
 import com.mobileia.trivia.entity.Option;
 import com.mobileia.trivia.entity.Trivia;
+import com.mobileia.trivia.rest.TriviaRest;
 
 /**
  * Created by matiascamiletti on 4/2/18.
  */
 
-public class TriviaViewHolder extends BaseViewHolder<Trivia> {
+public class TriviaViewHolder extends BaseViewHolder<Trivia> implements View.OnClickListener, TriviaRest.OnVoteComplete {
 
     public final TextView dateView;
     public final ImageView imageView;
@@ -25,6 +26,10 @@ public class TriviaViewHolder extends BaseViewHolder<Trivia> {
      * Almacena la trivia que se esta viendo
      */
     protected Trivia mTrivia;
+    /**
+     * Almacena el Ultimo ID de opcion seleccionado
+     */
+    protected int mLastOptionId = -1;
 
     /**
      * Constructor base
@@ -73,9 +78,22 @@ public class TriviaViewHolder extends BaseViewHolder<Trivia> {
         }
         // Recorremos las opciones
         for (Option o: mTrivia.options) {
-            // Imprimimos opcion
-            addOption(o);
+            // Verificamos si ya tiene votaciona
+            if(mTrivia.vote > 0){
+                addOptionResult(o);
+            }else{
+                // Imprimimos opcion
+                addOption(o);
+            }
         }
+    }
+
+    /**
+     * Funcion que se encarga de agregar las opciones con sus resultados
+     * @param option
+     */
+    protected void addOptionResult(Option option){
+
     }
 
     /**
@@ -87,7 +105,39 @@ public class TriviaViewHolder extends BaseViewHolder<Trivia> {
         View view = LayoutInflater.from(itemView.getContext()).inflate(R.layout.item_option, containerOptions, false);
         // Configuramos titulo
         ((TextView)view.findViewById(R.id.text_title)).setText(option.title);
+        // Asignamos el ID de la opcion
+        view.setTag(option.id);
+        // Asignamos el clik
+        view.setOnClickListener(this);
         // agregamos al layout
         containerOptions.addView(view);
+    }
+
+    /**
+     * Funcion que se ejecuta cuando se hace un click en una opcion
+     * @param view
+     */
+    @Override
+    public void onClick(View view) {
+        // Obtenemos el ID del option
+        mLastOptionId = (int)view.getTag();
+        // Realizamos la votacion
+        new TriviaRest(itemView.getContext()).vote(mTrivia.id, mLastOptionId, this);
+    }
+
+    /**
+     * Retorna el valor si se realizo una votacion
+     * @param response
+     */
+    @Override
+    public void onSuccess(Boolean response) {
+        // Verificamos si se produjo algun error
+        if(response == false){
+            return;
+        }
+        // Asignamos que ya se hizo una votacion
+        mTrivia.vote = mLastOptionId;
+        // Refrescamos el listado
+        notifyDataSetChanged();
     }
 }

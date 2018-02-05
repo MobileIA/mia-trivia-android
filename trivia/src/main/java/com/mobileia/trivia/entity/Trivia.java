@@ -22,4 +22,6 @@ public class Trivia {
     public Date end_date;
 
     public ArrayList<Option> options;
+
+    public int vote = -1;
 }
