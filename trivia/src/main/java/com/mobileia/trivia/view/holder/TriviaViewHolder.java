@@ -46,7 +46,11 @@ public class TriviaViewHolder extends BaseViewHolder<Trivia> {
         // Cargamos el titulo
         titleView.setText(object.title);
         // Cargamos la fecha de finalizacion
-        dateView.setText(object.end_date.toString());
+        if(object.end_date != null){
+            dateView.setText(object.end_date.toString());
+        }else{
+            dateView.setText("");
+        }
         // Verificamos si tiene foto
         if(object.photo != null && object.photo.length() > 0){
             imageView.setVisibility(View.VISIBLE);
@@ -63,6 +67,10 @@ public class TriviaViewHolder extends BaseViewHolder<Trivia> {
     protected void loadOptions(){
         // Limpiamos el contenedor
         containerOptions.removeAllViews();
+        // Verificamos si tiene opciones
+        if(mTrivia.options == null){
+            return;
+        }
         // Recorremos las opciones
         for (Option o: mTrivia.options) {
             // Imprimimos opcion

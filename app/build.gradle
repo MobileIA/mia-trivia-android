@@ -26,5 +26,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.mobileia:core:0.0.14'
+    implementation 'com.mobileia:recyclerview:0.0.15'
     compile project(path: ':trivia')
 }
