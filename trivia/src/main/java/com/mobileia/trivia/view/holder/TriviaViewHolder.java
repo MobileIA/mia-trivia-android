@@ -1,5 +1,7 @@
 package com.mobileia.trivia.view.holder;
 
+import android.content.res.Resources;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -93,7 +95,24 @@ public class TriviaViewHolder extends BaseViewHolder<Trivia> implements View.OnC
      * @param option
      */
     protected void addOptionResult(Option option){
-
+        // Obtenemos recursos
+        Resources resources = itemView.getContext().getResources();
+        // Inflamos vista de la opcion
+        View view = LayoutInflater.from(itemView.getContext()).inflate(R.layout.item_option_result, containerOptions, false);
+        // Configuramos titulo
+        ((TextView)view.findViewById(R.id.text_title)).setText(option.title);
+        // Asignamos los puntos
+        ((TextView)view.findViewById(R.id.text_points)).setText(String.valueOf(option.total));
+        // Cambiamos el color de fondo
+        if(option.is_correct == 1){
+            ((CardView)view.findViewById(R.id.card_view)).setCardBackgroundColor(resources.getColor(R.color.option_correct));
+        }else if(mTrivia.vote == option.id){
+            ((CardView)view.findViewById(R.id.card_view)).setCardBackgroundColor(resources.getColor(R.color.option_incorrect));
+        }else{
+            ((CardView)view.findViewById(R.id.card_view)).setCardBackgroundColor(resources.getColor(R.color.option_normal));
+        }
+        // agregamos al layout
+        containerOptions.addView(view);
     }
 
     /**

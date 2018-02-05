@@ -101,8 +101,8 @@ public class TriviaRest extends RestBuilder {
      * @return
      */
     public String getAccessToken(){
-        //return "3be8b617e076b96b2b0fa6369b6c72ed84318d72";
-        return MobileiaAuth.getInstance(mContext).getCurrentUser().getAccessToken();
+        return "3be8b617e076b96b2b0fa6369b6c72ed84318d72";
+        //return MobileiaAuth.getInstance(mContext).getCurrentUser().getAccessToken();
     }
 
     /**
