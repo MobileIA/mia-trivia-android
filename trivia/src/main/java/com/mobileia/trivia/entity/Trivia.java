@@ -17,9 +17,9 @@ public class Trivia {
 
     public String photo;
 
-    public Date start_date;
+    public String start_date;
 
-    public Date end_date;
+    public String end_date;
 
     public ArrayList<Option> options;
 

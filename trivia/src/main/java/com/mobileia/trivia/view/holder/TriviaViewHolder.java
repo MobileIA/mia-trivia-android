@@ -54,7 +54,7 @@ public class TriviaViewHolder extends BaseViewHolder<Trivia> implements View.OnC
         titleView.setText(object.title);
         // Cargamos la fecha de finalizacion
         if(object.end_date != null){
-            dateView.setText(object.end_date.toString());
+            dateView.setText("Hasta: " + object.end_date);
         }else{
             dateView.setText("");
         }
