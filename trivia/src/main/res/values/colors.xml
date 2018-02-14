@@ -2,5 +2,8 @@
 <resources>
     <color name="option_correct">#66bb6a</color>
     <color name="option_incorrect">#ef5350</color>
+    <color name="option_incorrect_alpha">#AAef5350</color>
     <color name="option_normal">#FF424242</color>
+    <color name="option_normal_alpha">#AA424242</color>
+    <color name="color_blue">#044b8e</color>
 </resources>

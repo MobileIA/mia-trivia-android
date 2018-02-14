@@ -45,9 +45,9 @@
                 android:text="¿Contra que equipo Messi metio 5 goles?"
                 android:layout_margin="10dp"
                 android:textStyle="bold"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:gravity="center_horizontal"
-                android:textColor="@android:color/black"/>
+                android:textColor="@color/color_blue"/>
 
             <LinearLayout
                 android:id="@+id/container_options"

@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.mobileia.recyclerview.holder.BaseViewHolder;
 import com.mobileia.trivia.R;
 import com.mobileia.trivia.entity.Option;
@@ -60,6 +62,7 @@ public class TriviaViewHolder extends BaseViewHolder<Trivia> implements View.OnC
         }
         // Verificamos si tiene foto
         if(object.photo != null && object.photo.length() > 0){
+            Glide.with(imageView).load(object.photo).into(imageView);
             imageView.setVisibility(View.VISIBLE);
         }else{
             imageView.setVisibility(View.GONE);
@@ -107,9 +110,9 @@ public class TriviaViewHolder extends BaseViewHolder<Trivia> implements View.OnC
         if(option.is_correct == 1){
             ((CardView)view.findViewById(R.id.card_view)).setCardBackgroundColor(resources.getColor(R.color.option_correct));
         }else if(mTrivia.vote == option.id){
-            ((CardView)view.findViewById(R.id.card_view)).setCardBackgroundColor(resources.getColor(R.color.option_incorrect));
+            ((CardView)view.findViewById(R.id.card_view)).setCardBackgroundColor(resources.getColor(R.color.option_incorrect_alpha));
         }else{
-            ((CardView)view.findViewById(R.id.card_view)).setCardBackgroundColor(resources.getColor(R.color.option_normal));
+            ((CardView)view.findViewById(R.id.card_view)).setCardBackgroundColor(resources.getColor(R.color.option_normal_alpha));
         }
         // agregamos al layout
         containerOptions.addView(view);
