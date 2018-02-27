@@ -160,6 +160,12 @@ public class TriviaViewHolder extends BaseViewHolder<Trivia> implements View.OnC
         }
         // Asignamos que ya se hizo una votacion
         mTrivia.vote = mLastOptionId;
+        // Recorremos las opciones
+        for (Option o: mTrivia.options) {
+            if(o.id == mLastOptionId){
+                o.total++;
+            }
+        }
         // Refrescamos el listado
         notifyDataSetChanged();
     }
