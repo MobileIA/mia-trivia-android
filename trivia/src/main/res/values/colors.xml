@@ -6,4 +6,5 @@
     <color name="option_normal">#FF424242</color>
     <color name="option_normal_alpha">#AA424242</color>
     <color name="color_blue">#044b8e</color>
+    <color name="background_date">#AAFFFFFF</color>
 </resources>

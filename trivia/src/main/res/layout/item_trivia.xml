@@ -27,14 +27,26 @@
                     android:src="@drawable/placeholder"
                     android:contentDescription="Image principal de la trivia"/>
 
-                <TextView
-                    android:id="@+id/text_date"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hasta: 10/02/2018"
-                    android:textAllCaps="true"
-                    android:layout_margin="10dp"
-                    android:textStyle="bold"/>
+                    android:orientation="vertical"
+                    android:background="@color/background_date"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/text_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hasta 10/02/2018"
+                        android:textSize="10sp"
+                        android:textAllCaps="true"
+                        android:textStyle="bold"
+                        />
+
+                </LinearLayout>
+
+
 
             </RelativeLayout>
 

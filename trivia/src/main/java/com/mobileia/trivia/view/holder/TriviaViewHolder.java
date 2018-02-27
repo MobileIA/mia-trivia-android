@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.mobileia.core.helper.DateHelper;
 import com.mobileia.recyclerview.holder.BaseViewHolder;
 import com.mobileia.trivia.R;
 import com.mobileia.trivia.entity.Option;
@@ -56,7 +57,7 @@ public class TriviaViewHolder extends BaseViewHolder<Trivia> implements View.OnC
         titleView.setText(object.title);
         // Cargamos la fecha de finalizacion
         if(object.end_date != null){
-            dateView.setText("Hasta: " + object.end_date);
+            dateView.setText("Hasta: " + DateHelper.stringToFormat(object.end_date, "yyyy-MM-dd", "d 'de' MMM 'de' yyyy"));
         }else{
             dateView.setText("");
         }
