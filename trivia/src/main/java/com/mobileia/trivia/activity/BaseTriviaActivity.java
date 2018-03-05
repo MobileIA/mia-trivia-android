@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.mobileia.recyclerview.MobileiaRecyclerView;
+import com.mobileia.trivia.R;
 import com.mobileia.trivia.adapter.TriviaAdapter;
 import com.mobileia.trivia.entity.Trivia;
 import com.mobileia.trivia.rest.TriviaRest;
@@ -47,6 +48,10 @@ abstract public class BaseTriviaActivity extends AppCompatActivity {
                 mAdapter.addAll(trivias);
                 // Paramos el loading
                 mRecyclerView.stopLoading();
+                // Verificar si no esta vacia
+                if(trivias.size() == 0){
+                    mRecyclerView.showEmptyView();
+                }
             }
         });
     }
@@ -63,6 +68,8 @@ abstract public class BaseTriviaActivity extends AppCompatActivity {
         mAdapter = new TriviaAdapter();
         // Asignamos el adapter
         mRecyclerView.setAdapter(mAdapter);
+        // Asignamos vista vacia
+        mRecyclerView.setEmptyView(R.layout.partial_trivia_empty);
         // Inicamos proceso para buscar las trivias
         fetchTrivias();
     }

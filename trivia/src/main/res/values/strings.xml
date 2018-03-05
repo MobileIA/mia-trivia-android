@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Trivia</string>
+
+    <string name="trivia_empty">No hay trivias en este momento, vuelve a la brevedad!</string>
 </resources>
