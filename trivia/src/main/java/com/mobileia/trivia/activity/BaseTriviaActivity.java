@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * Created by matiascamiletti on 4/2/18.
  */
 
-abstract public class BaseTriviaActivity extends AppCompatActivity {
+abstract public class BaseTriviaActivity extends AppCompatActivity implements TriviaRest.OnFetchAllComplete {
     /**
      * Almacena la vista del listado
      */
@@ -34,6 +34,18 @@ abstract public class BaseTriviaActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onSuccess(ArrayList<Trivia> trivias) {
+        // Asignamos las trivias al adapter
+        mAdapter.addAll(trivias);
+        // Paramos el loading
+        mRecyclerView.stopLoading();
+        // Verificar si no esta vacia
+        if(trivias.size() == 0){
+            mRecyclerView.showEmptyView();
+        }
+    }
+
     /**
      * Funcion que se encarga de llamar al servidor en busca de las trivias
      */
@@ -41,19 +53,7 @@ abstract public class BaseTriviaActivity extends AppCompatActivity {
         // Iniciamos el loading
         mRecyclerView.startLoading();
         // Llamar al servidor
-        new TriviaRest(this).fetchAllCurrent(new TriviaRest.OnFetchAllComplete() {
-            @Override
-            public void onSuccess(ArrayList<Trivia> trivias) {
-                // Asignamos las trivias al adapter
-                mAdapter.addAll(trivias);
-                // Paramos el loading
-                mRecyclerView.stopLoading();
-                // Verificar si no esta vacia
-                if(trivias.size() == 0){
-                    mRecyclerView.showEmptyView();
-                }
-            }
-        });
+        new TriviaRest(this).fetchAllCurrent(this);
     }
 
     /**
