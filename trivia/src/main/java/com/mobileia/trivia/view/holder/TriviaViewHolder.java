@@ -13,6 +13,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.mobileia.core.helper.DateHelper;
 import com.mobileia.recyclerview.holder.BaseViewHolder;
 import com.mobileia.trivia.R;
+import com.mobileia.trivia.adapter.TriviaAdapter;
 import com.mobileia.trivia.entity.Option;
 import com.mobileia.trivia.entity.Trivia;
 import com.mobileia.trivia.rest.TriviaRest;
@@ -168,5 +169,7 @@ public class TriviaViewHolder extends BaseViewHolder<Trivia> implements View.OnC
         }
         // Refrescamos el listado
         notifyDataSetChanged();
+        // Avisamos al adapter que se voto
+        ((TriviaAdapter)mAdapter).finishVote(mTrivia);
     }
 }

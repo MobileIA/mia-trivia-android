@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * Created by matiascamiletti on 4/2/18.
  */
 
-abstract public class BaseTriviaActivity extends AppCompatActivity implements TriviaRest.OnFetchAllComplete {
+abstract public class BaseTriviaActivity extends AppCompatActivity implements TriviaRest.OnFetchAllComplete, TriviaAdapter.OnVoteTriviaListener {
     /**
      * Almacena la vista del listado
      */
@@ -46,6 +46,11 @@ abstract public class BaseTriviaActivity extends AppCompatActivity implements Tr
         }
     }
 
+    @Override
+    public void onVote(Trivia trivia) {
+
+    }
+
     /**
      * Funcion que se encarga de llamar al servidor en busca de las trivias
      */
@@ -66,6 +71,7 @@ abstract public class BaseTriviaActivity extends AppCompatActivity implements Tr
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         // Creamos adapter
         mAdapter = new TriviaAdapter();
+        mAdapter.setOnVoteListener(this);
         // Asignamos el adapter
         mRecyclerView.setAdapter(mAdapter);
         // Asignamos vista vacia
